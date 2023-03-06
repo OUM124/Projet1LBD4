@@ -7,7 +7,7 @@ div{
     width: 500px;
     margin-left: 360px;
 }
-input[type="text"],textarea{
+input[type="text"],textarea,input[type="number"]{
     border: 1px solid dashed;
     background-color: rgb(221, 216, 212);
     width: 480px;

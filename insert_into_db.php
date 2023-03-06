@@ -1,5 +1,5 @@
 <?php 
-require_once("include/db.php");
+require_once("db.php");
 if(isset($_POST["Submit"])){
     if(!empty($_POST["emp_no"]) && !empty($_POST["first_name"])  && !empty($_POST["birth_date"])&&!empty($_POST["last_name"])&& !empty($_POST["gender"])  && !empty($_POST["hire_date"])){
         $emp_no = $_POST["emp_no"];
@@ -38,7 +38,7 @@ if(isset($_POST["Submit"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insert data into database</title>
-    <link rel="stylesheet" href="include/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="">
