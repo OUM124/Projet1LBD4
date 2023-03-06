@@ -52,7 +52,7 @@ if(isset($_POST["Submit"]))
                 <input type="number" name="emp_no" value="">
                 <br>
                 <span class="fieldinfo">New Title</span>
-                <br>
+                <br><br>
                 <input type="text" name="title" value="">
                 <br>
 
