@@ -1,16 +1,32 @@
 <?php 
 require_once("db.php");
 if(isset($_POST["Submit"])){
-    if(!empty($_POST["emp_no"]) && !empty($_POST["first_name"])  && !empty($_POST["birth_date"])&&!empty($_POST["last_name"])&& !empty($_POST["gender"])  && !empty($_POST["hire_date"])){
+    if(!empty($_POST["emp_no"]) && !empty($_POST["first_name"])  && !empty($_POST["birth_date"])&&!empty($_POST["last_name"])&& !empty($_POST["gender"])  && !empty($_POST["hire_date"]) && !empty($_POST["salary"]) &&!empty($_POST["title"]) && !empty($_POST["dept_name"])){
         $emp_no = $_POST["emp_no"];
         $first_name = $_POST["first_name"];
         $birth_date = $_POST["birth_date"];
         $last_name = $_POST["last_name"];
         $gender = $_POST["gender"];
         $hire_date = $_POST["hire_date"];
+        $salary = $_POST["salary"];
+        $title = $_POST["title"];
+        $dept_name = $_POST["dept_name"];
+        $date = date("Y-m-d");
+        $date1 = date("9999-01-01");
+        $assoc = array("Customer Service"=>"d009", "Development"=>"d005", "Finance"=>"d002" , "Human Resources"=>"d003","Marketing"=>"d001","Production"=>"d004","Quality Management"=>"d006","Research"=>"d008","Sales"=>"d007");
+
+
         global $ConnectingDB;
         $sql = "INSERT INTO EMPLOYEES(emp_no,birth_date,first_name,last_name,gender,hire_date)
         VALUES (:emp_nO,:birth_datE,:first_namE,:last_namE,:gendeR,:hire_datE)";
+        $query = "INSERT INTO SALARIES(emp_no,salary,from_date,to_date)
+        VALUES(:emp_nO,:salarY,'$date','$date1')";
+        $query1 = "INSERT INTO TITLES(emp_no,title,from_date,to_date)
+        VALUES(:emp_nO,:titlE,'$date','$date1')";
+        $query2 = "INSERT INTO DEPT_MANAGER(emp_no,dept_no,from_date,to_date)
+        VALUES(:emp_nO,:dept_nO,'$date','$date1')";
+        $query3 = "INSERT INTO DEPT_EMP(emp_no,dept_no,from_date,to_date)
+        VALUES(:emp_nO,:dept_nO,'$date','$date1')";
         $stmt = $ConnectingDB ->prepare($sql);
         $stmt ->bindValue(":emp_nO",$emp_no);
         $stmt ->bindValue(":birth_datE",$birth_date);
@@ -18,8 +34,32 @@ if(isset($_POST["Submit"])){
         $stmt ->bindValue(":last_namE",$last_name);
         $stmt ->bindValue(":gendeR",$gender);
         $stmt ->bindValue(":hire_datE",$hire_date);
+        $stm = $ConnectingDB ->prepare($query);
+        $stm ->bindValue(":emp_nO",$emp_no);
+        $stm ->bindValue(":salarY",$salary);
+        $stm1 = $ConnectingDB ->prepare($query1);
+        $stm1 ->bindValue(":emp_nO",$emp_no);
+        $stm1 ->bindValue(":titlE",$title);
+        $stm2 = $ConnectingDB ->prepare($query2);
+        $stm2 ->bindValue(":emp_nO",$emp_no);
+        $stm2 ->bindValue(":dept_nO",$assoc[$dept_name]);
+        $stm3 = $ConnectingDB ->prepare($query3);
+        $stm3 ->bindValue(":emp_nO",$emp_no);
+        $stm3 ->bindValue(":dept_nO",$assoc[$dept_name]);
+
+
+
+
+
         $Execute = $stmt->execute();
-        if($Execute){
+        $ExecutE = $stm->execute();
+        $ExecutE1 = $stm1->execute();
+        $ExecutE2 = $stm2->execute();
+        $ExecutE3 = $stm3->execute();
+
+
+
+        if($Execute && $ExecutE && $ExecutE1 && $ExecutE2 && $ExecutE3 ){
             echo '<script>alert("employee has been added successfully")</script>';
 
         }
@@ -70,13 +110,45 @@ if(isset($_POST["Submit"])){
                 <br>
                 <input type="date" name="hire_date" value="">
                 <br>
+                <span class="fieldinfo">  salary</span>
+                <br>
+                <input type="number" name="salary" value="">
+                <br>
+                <span class="fieldinfo">  title</span>
+                <br>
+                <select name="title" >
+                    <option value="">--Please choose an option--</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Senior Engineer">Senior Engineer</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Senior Staff">Senior Staff</option>
+                    <option value="Assistant Engineer">Assistant Engineer</option>
+                </select>              
+                 <br>
+                <span class="fieldinfo">  dept_name</span>
+                <br>
+                <select name="dept_name" >
+                    <option value="">--Please choose an option--</option>
+                    <option value="Customer Service">Customer Service</option>
+                    <option value="Development"> Development</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Production">Production</option>
+                    <option value="Quality Management">Quality Management</option>
+                    <option value="Research">Research</option>
+                    <option value="Sales">Sales</option>
+
+                </select>              
+               
+                 <br>
 
                 <input type="submit" name="Submit" value="submit it">
-            
+           
             </fieldset>
 </form>
 
     </div>
-    
+   
 </body>
 </html>
