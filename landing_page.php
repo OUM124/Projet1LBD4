@@ -1,17 +1,33 @@
 <?php 
 require_once("db.php");
+session_start();
 if(isset($_POST["Submit"])){
     if(!empty($_POST["emp_no"]) && !empty($_POST["password"]) ){
         $emp_no = $_POST["emp_no"];
         $password = $_POST["password"];
         global $ConnectingDB;
-        $sql = "SELECT emp_no FROM EMPLOYEES";
+        $sql = 'SELECT * FROM EMPLOYEES WHERE emp_no = :emp_no AND first_name = :pass ';
         $stmt = $ConnectingDB ->prepare($sql);
-        //$table = array();
-            //while ($row = mysqli_fetch_assoc($stmt)) {
-            //$table[] = $row;
-        //}
-       
+        $stmt->bindParam(':emp_no', $emp_no);
+        $stmt->bindParam(':pass', $password);
+        $stmt->execute();
+
+
+
+        if ($stmt->rowCount() == 1) {
+            $_SESSION['username'] = $emp_no;
+            header('Location: simple.php');
+            exit();
+
+
+
+        }
+        else{
+            echo '<script>alert(" Invalid username or password")</script>';
+
+        }
+
+
 
 
 
@@ -32,8 +48,8 @@ if(isset($_POST["Submit"])){
 
 </head>
 <body>
-<form class="" action="simple.php" method="post">
-   
+<form class="" action="landing_page.php" method="post">
+    
     <span class="fieldinfo">emp_no</span>
     <br>
     <input type="number" name="emp_no" value="">
