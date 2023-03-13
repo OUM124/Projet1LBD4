@@ -23,32 +23,38 @@ if(isset($_POST["Submit"]))
         if( $Executee && $count!=0)
         {
         if($Exe && $countDept!=0 ){
-            // Changing the departement_no
-            $sql = "UPDATE DEPT_EMP set dept_no='$new' WHERE emp_no=$number";
+            // Changing the end of the date 
+            $sql = "UPDATE DEPT_EMP set to_date='$newDate' WHERE emp_no='$number'";
             global $ConnectingDB;
             $stmt = $ConnectingDB ->prepare($sql);
             $Execute = $stmt->execute();
-            // Update the date
-            $sql1 = "UPDATE DEPT_EMP set from_date='$newDate' WHERE emp_no=$number";
+            // Insert new employee
+            $todate = date('9999-01-01');
+            $sql1 = "INSERT INTO  DEPT_EMP (emp_no,dept_no,from_date,to_date)
+            VALUES('$number','$new','$newDate','$todate')";
             global $ConnectingDB;
-            $stm = $ConnectingDB ->prepare($sql1);
-            $Execut = $stm->execute();
-            if($Execute && $Execut ){
-                echo "Departement Changed";
+            $stmt1 = $ConnectingDB ->prepare($sql1);
+            $Execute1 = $stmt1->execute();
+            if($Execute   ){
+            echo '<script>alert("Departement Changed")</script>';
+        
             } 
         } 
         else{
-            echo "This departement does not exist!";
+            echo '<script>alert("This departement does not exist!")</script>';
+
            
         }
     }
         else{
-            echo "This Employee is not Here";
+            echo '<script>alert("This Employee is not Here")</script>';
+
             }
         
     }
     else{
-        echo "ALL the fields are obligatory";
+        echo '<script>alert("ALL the fields are obligatory")</script>';
+
     }
 }
 ?>
@@ -68,17 +74,18 @@ if(isset($_POST["Submit"]))
         form{
             background-color: transparent;
             width: 400px;
-            margin-top:300px ;
+            margin-top:200px ;
             margin-left: 220px;
             border: 1px solid transparent;
         }
         input{
             background-color: transparent;
-            width: 100%;
+            width: 95%;
             border-radius: 10px;
             margin-bottom: 10px;
             height: 20px;
             color: azure;
+            padding: 7px;
         }
         .fieldinfo{
             color: rgb(251, 174, 44);
@@ -102,7 +109,7 @@ if(isset($_POST["Submit"]))
             font-weight: bold;
             float: left;}
             h1{
-                color: purple;
+                color: white;
                 font-weight: bold;
             }
 
