@@ -80,6 +80,7 @@ if(isset($_POST["Submit"])){
             width:100%;
             background-image: linear-gradient(to top right,blue,black,aquamarine);
             padding: 6px;
+            cursor: pointer;
         }
         h3{
             text-align: center;
