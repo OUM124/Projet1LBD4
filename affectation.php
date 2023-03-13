@@ -80,12 +80,12 @@ if(isset($_POST["Submit"]))
         }
         input{
             background-color: transparent;
-            width: 100%;
+            width: 95%;
             border-radius: 10px;
             margin-bottom: 10px;
             height: 20px;
             color: azure;
-            padding: 10px;
+            padding: 7px;
         }
         .fieldinfo{
             color: rgb(251, 174, 44);

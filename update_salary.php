@@ -108,6 +108,7 @@ if (isset($_POST["Submit-update"])) {
             h1{
                 color: white;
                 font-weight: bold;
+                text-align: center;
             }
             </style>
 </head>

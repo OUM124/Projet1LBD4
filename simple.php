@@ -23,22 +23,24 @@
             width: 500px;
             font-family: Bitter;
             margin: 0 auto;
+            margin-top: 20px;
+            font-size: 30px;
         }
         .form1{
             width: 1100px;
-            margin-top: 130px;
+            margin-top: 100px;
         }
         .form2{
             width: 1100px;
-            margin-top: 130px;
+            margin-top: 100px;
         }
         .form3{
             width: 1100px;
-            margin-top: 130px;
+            margin-top: 100px;
         }
         .form4{
             width: 1100px;
-            margin-top: 130px;
+            margin-top: 100px;
         }
 
         
@@ -62,6 +64,7 @@
         
         small{
             color: red;
+            
 
         }
         .insert{

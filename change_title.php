@@ -95,7 +95,7 @@ if(isset($_POST["Submit"]))
             font-weight: bold;
             float: left;}
             h1{
-                color: purple;
+                color: white;
                 font-weight: bold;
             }
 
@@ -104,7 +104,7 @@ if(isset($_POST["Submit"]))
 <body>
     <div class="">
         <h1>
-            Chnage the title of an Employee
+            Change the title of an Employee
         </h1>
         <form class="" action="change_title.php" method="post">
             <fieldset>

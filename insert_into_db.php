@@ -45,6 +45,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            color: white;
         }
         #date{
             width: 100%;
@@ -71,7 +72,7 @@
         h1{
             width: 300px;
             margin: 0 auto;
-            color: deeppink;
+            color: white;
         }
 
         input{
