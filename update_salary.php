@@ -108,7 +108,7 @@ if (isset($_POST["Submit-update"])) {
             border-top-left-radius: 35px;
             border-color: rgb(221, 216, 212);
             font-weight: bold;
-            <<<<<<< HEAD float: left;
+            float: left;
         }
 
         h1 {
@@ -116,15 +116,7 @@ if (isset($_POST["Submit-update"])) {
             font-weight: bold;
         }
     </style>
-    =======
-    float: left;}
-    h1{
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    }
-    </style>
-    >>>>>>> 2d89dc77beba155cb26f410485a31f964f61c484
+   
 </head>
 
 <body>
