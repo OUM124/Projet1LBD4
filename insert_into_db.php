@@ -1,75 +1,3 @@
-<?php 
-require_once("db.php");
-if(isset($_POST["Submit"])){
-    if(!empty($_POST["emp_no"]) && !empty($_POST["first_name"])  && !empty($_POST["birth_date"])&&!empty($_POST["last_name"])&& !empty($_POST["gender"])  && !empty($_POST["hire_date"]) && !empty($_POST["salary"]) &&!empty($_POST["title"]) && !empty($_POST["dept_name"])){
-        $emp_no = $_POST["emp_no"];
-        $first_name = $_POST["first_name"];
-        $birth_date = $_POST["birth_date"];
-        $last_name = $_POST["last_name"];
-        $gender = $_POST["gender"];
-        $hire_date = $_POST["hire_date"];
-        $salary = $_POST["salary"];
-        $title = $_POST["title"];
-        $dept_name = $_POST["dept_name"];
-        $date = date("Y-m-d");
-        $date1 = date("9999-01-01");
-        $assoc = array("Customer Service"=>"d009", "Development"=>"d005", "Finance"=>"d002" , "Human Resources"=>"d003","Marketing"=>"d001","Production"=>"d004","Quality Management"=>"d006","Research"=>"d008","Sales"=>"d007");
-
-
-        global $ConnectingDB;
-        $sql = "INSERT INTO EMPLOYEES(emp_no,birth_date,first_name,last_name,gender,hire_date)
-        VALUES (:emp_nO,:birth_datE,:first_namE,:last_namE,:gendeR,:hire_datE)";
-        $query = "INSERT INTO SALARIES(emp_no,salary,from_date,to_date)
-        VALUES(:emp_nO,:salarY,'$date','$date1')";
-        $query1 = "INSERT INTO TITLES(emp_no,title,from_date,to_date)
-        VALUES(:emp_nO,:titlE,'$date','$date1')";
-        $query2 = "INSERT INTO DEPT_MANAGER(emp_no,dept_no,from_date,to_date)
-        VALUES(:emp_nO,:dept_nO,'$date','$date1')";
-        $query3 = "INSERT INTO DEPT_EMP(emp_no,dept_no,from_date,to_date)
-        VALUES(:emp_nO,:dept_nO,'$date','$date1')";
-        $stmt = $ConnectingDB ->prepare($sql);
-        $stmt ->bindValue(":emp_nO",$emp_no);
-        $stmt ->bindValue(":birth_datE",$birth_date);
-        $stmt ->bindValue(":first_namE",$first_name);
-        $stmt ->bindValue(":last_namE",$last_name);
-        $stmt ->bindValue(":gendeR",$gender);
-        $stmt ->bindValue(":hire_datE",$hire_date);
-        $stm = $ConnectingDB ->prepare($query);
-        $stm ->bindValue(":emp_nO",$emp_no);
-        $stm ->bindValue(":salarY",$salary);
-        $stm1 = $ConnectingDB ->prepare($query1);
-        $stm1 ->bindValue(":emp_nO",$emp_no);
-        $stm1 ->bindValue(":titlE",$title);
-        $stm2 = $ConnectingDB ->prepare($query2);
-        $stm2 ->bindValue(":emp_nO",$emp_no);
-        $stm2 ->bindValue(":dept_nO",$assoc[$dept_name]);
-        $stm3 = $ConnectingDB ->prepare($query3);
-        $stm3 ->bindValue(":emp_nO",$emp_no);
-        $stm3 ->bindValue(":dept_nO",$assoc[$dept_name]);
-
-
-
-
-
-        $Execute = $stmt->execute();
-        $ExecutE = $stm->execute();
-        $ExecutE1 = $stm1->execute();
-        $ExecutE2 = $stm2->execute();
-        $ExecutE3 = $stm3->execute();
-
-
-
-        if($Execute && $ExecutE && $ExecutE1 && $ExecutE2 && $ExecutE3 ){
-            echo '<script>alert("employee has been added successfully")</script>';
-
-        }
-    }
-    else{
-        echo '<script>alert("pls add smth")</script>';
-    }
-}
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,6 +8,38 @@ if(isset($_POST["Submit"])){
     <title>insert data into database</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        table, th, td {
+            color: white;
+            font-size: 17px;
+            width:160px;
+            padding: 12px 15px;
+        }
+        th {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+
+        }
+        tr{
+            width:160px;
+            background-color: lightgrey;
+            color: black;
+        }
+        table{
+            position: absolute;
+            top: 50%;
+            left: 4%;
+            padding: 12px 15px;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+
+
+        }
         body{
             background-image:url(b.jpg) ;
             background-repeat: no-repeat;
@@ -191,3 +151,96 @@ if(isset($_POST["Submit"])){
    
 </body>
 </html>
+<?php 
+echo '<br>';
+
+require_once("db.php");
+if(isset($_POST["Submit"])){
+    if(!empty($_POST["emp_no"]) && !empty($_POST["first_name"])  && !empty($_POST["birth_date"])&&!empty($_POST["last_name"])&& !empty($_POST["gender"])  && !empty($_POST["hire_date"]) && !empty($_POST["salary"]) &&!empty($_POST["title"]) && !empty($_POST["dept_name"])){
+        $emp_no = $_POST["emp_no"];
+        $first_name = $_POST["first_name"];
+        $birth_date = $_POST["birth_date"];
+        $last_name = $_POST["last_name"];
+        $gender = $_POST["gender"];
+        $hire_date = $_POST["hire_date"];
+        $salary = $_POST["salary"];
+        $title = $_POST["title"];
+        $dept_name = $_POST["dept_name"];
+        $date = date("Y-m-d");
+        $date1 = date("9999-01-01");
+        $assoc = array("Customer Service"=>"d009", "Development"=>"d005", "Finance"=>"d002" , "Human Resources"=>"d003","Marketing"=>"d001","Production"=>"d004","Quality Management"=>"d006","Research"=>"d008","Sales"=>"d007");
+
+
+        global $ConnectingDB;
+
+        $q= "SELECT * FROM EMPLOYEES WHERE emp_no=$emp_no";
+        $s = $ConnectingDB ->prepare($q);
+        $s->execute();
+        if($s->rowCount()==1){
+            echo '<script>alert("Employee already exists!")</script>';
+
+        }
+        else{
+            $sql = "INSERT INTO EMPLOYEES(emp_no,birth_date,first_name,last_name,gender,hire_date)
+            VALUES (:emp_nO,:birth_datE,:first_namE,:last_namE,:gendeR,:hire_datE)";
+            $query = "INSERT INTO SALARIES(emp_no,salary,from_date,to_date)
+            VALUES(:emp_nO,:salarY,'$date','$date1')";
+            $query1 = "INSERT INTO TITLES(emp_no,title,from_date,to_date)
+            VALUES(:emp_nO,:titlE,'$date','$date1')";
+            $query3 = "INSERT INTO DEPT_EMP(emp_no,dept_no,from_date,to_date)
+            VALUES(:emp_nO,:dept_nO,'$date','$date1')";
+            $stmt = $ConnectingDB ->prepare($sql);
+            $stmt ->bindValue(":emp_nO",$emp_no);
+            $stmt ->bindValue(":birth_datE",$birth_date);
+            $stmt ->bindValue(":first_namE",$first_name);
+            $stmt ->bindValue(":last_namE",$last_name);
+            $stmt ->bindValue(":gendeR",$gender);
+            $stmt ->bindValue(":hire_datE",$hire_date);
+            $stm = $ConnectingDB ->prepare($query);
+            $stm ->bindValue(":emp_nO",$emp_no);
+            $stm ->bindValue(":salarY",$salary);
+            $stm1 = $ConnectingDB ->prepare($query1);
+            $stm1 ->bindValue(":emp_nO",$emp_no);
+            $stm1 ->bindValue(":titlE",$title);
+            $stm3 = $ConnectingDB ->prepare($query3);
+            $stm3 ->bindValue(":emp_nO",$emp_no);
+            $stm3 ->bindValue(":dept_nO",$assoc[$dept_name]);
+            $Execute = $stmt->execute();
+            $ExecutE = $stm->execute();
+            $ExecutE1 = $stm1->execute();
+            $ExecutE3 = $stm3->execute();
+    
+    
+    
+            if($Execute && $ExecutE && $ExecutE1  && $ExecutE3 ){
+                echo '<script>alert("Employee has been added successfully")</script>';
+                $st = $ConnectingDB->prepare("SELECT * FROM EMPLOYEES
+                WHERE emp_no=$emp_no");
+                $st->execute();
+                echo '<br>';
+                echo "<table>";
+                echo "<tr><th>emp_no</th><th>birth_date</th><th>first_name</th><th>last_name</th><th>gender</th><th>hire_date</th></tr>";
+                while ($row = $st->fetch(PDO::FETCH_ASSOC) ) {
+                echo "<tr>";
+                echo "<td>" . $row["emp_no"] . "</td>";
+                echo "<td>" . $row["birth_date"] . "</td>";
+                echo "<td>" . $row["first_name"] ."</td>";
+                echo "<td>" .$row["last_name"] ."</td>";
+                echo "<td>" . $row["gender"] ."</td>";
+                echo "<td>" .$row["hire_date"]  ."</td>";
+                echo "</tr>";
+                }               
+                echo "</table>";
+    
+                echo '<br>';
+    
+            }
+
+        }
+
+    }
+    else{
+        echo '<script>alert("All fields are required!")</script>';
+    }
+}
+?>
