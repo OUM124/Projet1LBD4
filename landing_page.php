@@ -88,6 +88,9 @@ if(isset($_POST["Submit"])){
             font-weight: bold;
             font-size: large;
         }
+        input{
+            color: white;
+        }
         
     </style>
 </head>

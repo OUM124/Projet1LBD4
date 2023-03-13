@@ -14,7 +14,7 @@
             background-attachment: fixed;
         }
         .title{
-            color:purple;
+            color:white;
             font-weight: bold;
             font-size:x-large;
             padding: 10px;
@@ -45,10 +45,13 @@
             border-color: rgb(221, 216, 212);
             font-weight: bold;
             float: left;
+            cursor: pointer;
 
         }
-        form{
-            margin-top: 20px;
+        
+        small{
+            color: red;
+
         }
     </style>
 </head>
@@ -65,10 +68,11 @@
 
     if($EXE)
     {
-        echo '<div class="title">Welcome '.$results[0]['first_name'].'  '.$results[0]['last_name'].'</div>';
+        echo '<div class="title"><small>Welcome</small> '.$results[0]['first_name'].'  '.$results[0]['last_name'].'</div>';
     }
     ?>
 <body>
+    <div class="all">
     <div class="form1">
     <form class="" action="insert_into_db.php" method="post">
     <input type="submit" name="Submit0" value="insert a new employee" id="salary">
@@ -93,7 +97,7 @@
     <input type="submit" name="Submit3" value="affect an employee to a department">
     <br>
     </div>
-    </form>
+    </form></div>
     
     
 
