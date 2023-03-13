@@ -5,22 +5,26 @@ if(isset($_POST["Submit"]))
     if(isset($_POST["emp_no"]) && isset($_POST["title"]))
     {
         $new = $_POST['title'];
+        $newDate = date('Y-m-d');
         $number = $_POST['emp_no'];
-        /*$in = "SELECT * FROM TITLES WHERE emp_no=$number";
-        $stm = $ConnectingDB ->prepare($in);
-        $Executee = $stm->execute();*/
+        // To check if the employee is there or not by counting the number of rows obtained , if there is no employee whit the given number the the set will be empty , then we cannot update it
         $lol = "SELECT COUNT(*) FROM TITLES WHERE emp_no = $number";
         global $ConnectingDB;
         $st = $ConnectingDB->prepare($lol);
         $Executee = $st->execute();
         $count = $st->fetchColumn();
         if($Executee && $count!=0){
-            echo "The Employee is there";
+            // Changing the title
             $sql = "UPDATE TITLES set title='$new' WHERE emp_no=$number";
             global $ConnectingDB;
             $stmt = $ConnectingDB ->prepare($sql);
             $Execute = $stmt->execute();
-            if($Execute ){
+            // Update the date
+            $sql1 = "UPDATE TITLES set from_date='$newDate' WHERE emp_no=$number";
+            global $ConnectingDB;
+            $stm = $ConnectingDB ->prepare($sql1);
+            $Execut = $stm->execute();
+            if($Execute && $Execute ){
                 echo "Title Changed";
             } 
         } 
@@ -49,13 +53,12 @@ if(isset($_POST["Submit"]))
             <fieldset>
                 <span class="fieldinfo">emp_no</span>
                 <br>
-                <input type="number" name="emp_no" value="">
+                <input type="number" name="emp_no" value="" required>
                 <br>
                 <span class="fieldinfo">New Title</span>
                 <br><br>
-                <input type="text" name="title" value="">
+                <input type="text" name="title" value="" required> 
                 <br>
-
                 <input type="submit" name="Submit" value="submit it">
             
             </fieldset>
