@@ -58,10 +58,59 @@ if(isset($_POST["Submit"]))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background-image:url(blue.jpg) ;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        form{
+            background-color: transparent;
+            width: 400px;
+            margin-top:300px ;
+            margin-left: 220px;
+            border: 1px solid transparent;
+        }
+        input{
+            background-color: transparent;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            height: 20px;
+            color: azure;
+        }
+        .fieldinfo{
+            color: rgb(251, 174, 44);
+            font-family: Bitter, Georgia, 'Times New Roman', Times, serif;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        input[type="submit"]{
+            color: white;
+            font-size: 1.0em;
+            font-family: Bitter, Georgia, 'Times New Roman', Times, serif;
+            width: 200px;
+            height: 40px;
+            background-color: #5d05805d;
+            border: 5px solid;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            border-top-right-radius: 35px;
+            border-top-left-radius: 35px;
+            border-color: rgb(221, 216, 212);
+            font-weight: bold;
+            float: left;}
+            h1{
+                color: purple;
+                font-weight: bold;
+            }
+
+    </style>
 </head>
 <body>
     <div class="">
+        <h1>Employee Affectation</h1>
         <form class="" action="affectation.php" method="post">
             <fieldset>
                 <span class="fieldinfo">emp_no</span>

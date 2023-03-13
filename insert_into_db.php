@@ -79,9 +79,48 @@ if(isset($_POST["Submit"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insert data into database</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background-image:url(b.jpg) ;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #date{
+            width: 100%;
+            height: 30px;
+            border-radius: 10px;
+        }
+        #select{
+            width: 100%;
+            height: 30px;
+            border-radius: 10px; 
+        }
+        .sub
+        {
+            margin-top: 20px;
+            width: 200px;
+            margin: 0 auto;
+        }
+        form{
+            margin-top: 10px;
+            margin-left: 400px;
+            background-color: transparent;
+        }
+        h1{
+            width: 300px;
+            margin: 0 auto;
+            color: deeppink;
+        }
+
+        input{
+            background-color: transparent;
+        }
+    </style>
 </head>
 <body>
     <div class="">
+        <h1>Insert An employee</h1>
         <form class="" action="insert_into_db.php" method="post">
             <fieldset>
                 <span class="fieldinfo">emp_no</span>
@@ -90,7 +129,7 @@ if(isset($_POST["Submit"])){
                 <br>
                 <span class="fieldinfo">birth_date</span>
                 <br>
-                <input type="date" name="birth_date" value="">
+                <input type="date" name="birth_date" value="" id="date">
                 <br>
                 <span class="fieldinfo"> first_name</span>
                 <br>
@@ -108,7 +147,7 @@ if(isset($_POST["Submit"])){
                 <br>
                 <span class="fieldinfo">  hire_date</span>
                 <br>
-                <input type="date" name="hire_date" value="">
+                <input type="date" name="hire_date" value="" id="date">
                 <br>
                 <span class="fieldinfo">  salary</span>
                 <br>
@@ -116,8 +155,8 @@ if(isset($_POST["Submit"])){
                 <br>
                 <span class="fieldinfo">  title</span>
                 <br>
-                <select name="title" >
-                    <option value="">--Please choose an option--</option>
+                <select name="title" id="select">
+                    <option value="">Please select a title</option>
                     <option value="Staff">Staff</option>
                     <option value="Senior Engineer">Senior Engineer</option>
                     <option value="Engineer">Engineer</option>
@@ -127,8 +166,8 @@ if(isset($_POST["Submit"])){
                  <br>
                 <span class="fieldinfo">  dept_name</span>
                 <br>
-                <select name="dept_name" >
-                    <option value="">--Please choose an option--</option>
+                <select name="dept_name" id="select">
+                    <option value="">Please Choose a departement</option>
                     <option value="Customer Service">Customer Service</option>
                     <option value="Development"> Development</option>
                     <option value="Finance">Finance</option>
@@ -141,9 +180,9 @@ if(isset($_POST["Submit"])){
 
                 </select>              
                
-                 <br>
+                 <br><br>
 
-                <input type="submit" name="Submit" value="submit it">
+                <input type="submit" name="Submit" value="submit it" class="sub">
            
             </fieldset>
 </form>
