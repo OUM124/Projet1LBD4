@@ -63,7 +63,7 @@ if (isset($_POST["Submit-update"])) {
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background-image: url(mm.avif);
+            background-image: url(lo.png);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -73,7 +73,7 @@ if (isset($_POST["Submit-update"])) {
             background-color: transparent;
             position: absolute;
             top: 100px;
-            left: 350px;
+            left: 60px;
             width: 400px;
             border: 1px solid transparent;
         }
@@ -114,6 +114,7 @@ if (isset($_POST["Submit-update"])) {
         h1 {
             color: white;
             font-weight: bold;
+            text-align: center;
         }
     </style>
    
