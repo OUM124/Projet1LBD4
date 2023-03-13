@@ -8,7 +8,7 @@ if (isset($_POST["Submit-update"])) {
 
         global $ConnectingDB;
 
-        $stmt = $ConnectingDB->query("SELECT emp_no
+        $stmt = $ConnectingDB->query("SELECT emp_n
         FROM SALARIES
         WHERE emp_no = $emp_no");
         $stmt->closeCursor();
