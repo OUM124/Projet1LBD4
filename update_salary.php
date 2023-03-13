@@ -8,7 +8,7 @@ if (isset($_POST["Submit-update"])) {
 
         global $ConnectingDB;
 
-        $stmt = $ConnectingDB->query("SELECT emp_n
+        $stmt = $ConnectingDB->query("SELECT emp_no
         FROM SALARIES
         WHERE emp_no = $emp_no");
         $stmt->closeCursor();
@@ -62,13 +62,14 @@ if (isset($_POST["Submit-update"])) {
     <title>update the salary of an employee</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body{
-            background-image:url(mm.avif) ;
+        body {
+            background-image: url(mm.avif);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-        form{
+
+        form {
             background-color: transparent;
             position: absolute;
             top: 100px;
@@ -76,7 +77,8 @@ if (isset($_POST["Submit-update"])) {
             width: 400px;
             border: 1px solid transparent;
         }
-        input{
+
+        input {
             background-color: transparent;
             width: 100%;
             border-radius: 10px;
@@ -84,13 +86,15 @@ if (isset($_POST["Submit-update"])) {
             height: 20px;
             color: azure;
         }
-        .fieldinfo{
+
+        .fieldinfo {
             color: rgb(251, 174, 44);
             font-family: Bitter, Georgia, 'Times New Roman', Times, serif;
             font-size: 1em;
             margin-top: 10px;
         }
-        input[type="submit"]{
+
+        input[type="submit"] {
             color: white;
             font-size: 1.0em;
             font-family: Bitter, Georgia, 'Times New Roman', Times, serif;
@@ -104,12 +108,14 @@ if (isset($_POST["Submit-update"])) {
             border-top-left-radius: 35px;
             border-color: rgb(221, 216, 212);
             font-weight: bold;
-            float: left;}
-            h1{
-                color: white;
-                font-weight: bold;
-            }
-            </style>
+            float: left;
+        }
+
+        h1 {
+            color: white;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
