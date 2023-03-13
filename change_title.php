@@ -14,27 +14,31 @@ if(isset($_POST["Submit"]))
         $Executee = $st->execute();
         $count = $st->fetchColumn();
         if($Executee && $count!=0){
-            // Changing the title
-            $sql = "UPDATE TITLES set title='$new' WHERE emp_no=$number";
+            // Changing the to_date
+            $sql = "UPDATE TITLES set to_date='$newDate' WHERE emp_no='$number'";
             global $ConnectingDB;
             $stmt = $ConnectingDB ->prepare($sql);
             $Execute = $stmt->execute();
-            // Update the date
-            $sql1 = "UPDATE TITLES set from_date='$newDate' WHERE emp_no=$number";
+            //Insert
+            $todate = date('9999-01-01');
+            $sql1 = "INSERT INTO  TITLES (emp_no,title,from_date,to_date)
+            VALUES('$number','$new','$newDate','$todate')";
             global $ConnectingDB;
-            $stm = $ConnectingDB ->prepare($sql1);
-            $Execut = $stm->execute();
-            if($Execute && $Execute ){
-                echo "Title Changed";
+            $stmt1 = $ConnectingDB ->prepare($sql1);
+            $Execute1 = $stmt1->execute();
+            if($Execute1 && $Execute ){
+                echo '<script>alert("Title updated!")</script>';
             } 
         } 
         else{
-            echo "This Employee is not Here";
+            echo '<script>alert("This Employee is not Here")</script>';
         }
         
     }
     else{
-        echo "ALL the fields are obligatory";
+            echo '<script>alert("ALL the fields are obligatory")</script>';
+            
+
     }
 }
 ?>
@@ -51,6 +55,7 @@ if(isset($_POST["Submit"]))
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            
         }
         form{
             background-color: transparent;

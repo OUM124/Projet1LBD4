@@ -78,7 +78,7 @@ if(isset($_POST["Submit"])){
             border: 2px solid transparent;
             border-radius: 20px;
             width:100%;
-            background-image: linear-gradient(to top right,blue,white,aquamarine);
+            background-image: linear-gradient(to top right,blue,black,aquamarine);
             padding: 6px;
         }
         h3{
@@ -108,7 +108,7 @@ if(isset($_POST["Submit"])){
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password..." name="password" >
         
     </div>
-    <input type="submit" name="Submit" >
+    <input type="submit" name="Submit" value="Log In" >
     </form>
 
 

@@ -103,9 +103,10 @@ if(isset($_POST["Submit"])){
             margin: 0 auto;
         }
         form{
-            margin-top: 10px;
-            margin-left: 400px;
             background-color: transparent;
+            margin-left: 350px;
+            padding: 20px;
+            
         }
         h1{
             width: 300px;
@@ -115,6 +116,8 @@ if(isset($_POST["Submit"])){
 
         input{
             background-color: transparent;
+            color: white;
+            
         }
     </style>
 </head>

@@ -26,7 +26,19 @@
         }
         .form1{
             width: 1100px;
-            margin-top: 215px;
+            margin-top: 130px;
+        }
+        .form2{
+            width: 1100px;
+            margin-top: 130px;
+        }
+        .form3{
+            width: 1100px;
+            margin-top: 130px;
+        }
+        .form4{
+            width: 1100px;
+            margin-top: 130px;
         }
 
         
@@ -38,20 +50,29 @@
             height: 50px;
             background-color: #5d05805d;
             border: 5px solid;
-            border-bottom-left-radius: 35px;
-            border-bottom-right-radius: 35px;
-            border-top-right-radius: 35px;
-            border-top-left-radius: 35px;
             border-color: rgb(221, 216, 212);
             font-weight: bold;
-            float: left;
             cursor: pointer;
-
+            border-radius: 19px;
+        }
+        .all{
+            display: flex;
+            flex-direction: row;
         }
         
         small{
             color: red;
 
+        }
+        .insert{
+            width: 300px;
+            height: 300px;
+            margin-left: 5px;
+        }
+        .salary{
+            width: 300px;
+            height: 300px;
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -76,28 +97,32 @@
     <div class="form1">
     <form class="" action="insert_into_db.php" method="post">
     <input type="submit" name="Submit0" value="insert a new employee" id="salary">
+   
+    <img src="insert.png" alt="" class="insert">
+    
     <br>
-    </div>
-
     </form>
+    </div>
     <div class="form2">
     <form class="" action="update_salary.php" method="post">
     <input type="submit" name="Submit1" value="update the salary of an employee">
+    <img src="salary.png" alt="" class="salary">
     <br>
-    </div>
-    </form>
+    
+    </form></div>
     <div class="form3">
     <form class="" action="change_title.php" method="post">
     <input type="submit" name="Submit2" value="change the title of an employee">
-    <br></div>
-
-    </form>
+    <img src="job.webp" alt="" class="insert">
+    <br>
+    </form></div>
     <div class="form4">
     <form class="" action="affectation.php" method="post">
     <input type="submit" name="Submit3" value="affect an employee to a department">
+    <img src="add.png" alt="" class="insert">
     <br>
-    </div>
-    </form></div>
+    
+    </form></div></div>
     
     
 
